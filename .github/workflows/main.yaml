@@ -1,61 +1,28 @@
-# name: 'Basic'
+name :'Basic'
 
-# # 어떤 상황에서 이게 돌아가는지 trigger
-# # on: ['push','pull_request'] 
-# # on:
-# #   push:
-# #     branches:
-# #       -main
-# #       -'feature/*'
-# #     paths:
-# #       -'src/**/*'
-# on: push
-# env:
-#   GLOBAL_VALUE:"This is a env variable from the global level"
-
-# jobs:
-#   build-test: # 딕셔너리 의미, 순서보장X
-#     name:'First Job'
-
-#     runs-on:ubuntu-latest # 우리의 애플리케이션은 우분투 전용이다
-#     env:
-#       JOB_VALUE:"This is a env value from job level"
-
-#     # 본격적인 수행 부분
-#     steps: 
-#       - name : Say hello world 1 # 배열의 의미
-#       shell: bash # bash 쉘
-
-#       env:
-#         STEP_VALUE_1:"THis is a value from step value1"
-#       run:
-#         echo ""
-
-
-#       run:
-#         echo "Hello world from step 1"
-      
-#       -name : Say hello world 2
-#       shell:pwsh #파워쉘
-#       run:
-#         echo "Hello world from 2"
-
-
-
-name: 'hello-world'
-on: push
+on:
+  push:
+    branches:
+    - main
 
 jobs:
-  first:
-    name:'First Job'
+  build-test:
+    name: 'Build Test Job'
+    runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        os: ['windows-latest','macos-latest','ubuntu-latest']
-    
-    runs-on: ${{matrix.os}}
     steps:
-    - name: Say hello from OS - ${{matrix.os}}
+    - name: hello world
       shell: bash
       run: |
-        echo "Hello World from ${{matrix.os}}"
+        echo "hello world"
+  dev:
+    name: 'Dev Job'
+    needs:
+    - build-test
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: hello world
+      shell: bash
+      run: |
+        echo "hello world"
