@@ -9,8 +9,7 @@ name: 'Basic'
 #       -'feature/*'
 #     paths:
 #       -'src/**/*'
-on:
-  push
+on: push
 
 jobs:
   build-test: # 딕셔너리 의미, 순서보장X
