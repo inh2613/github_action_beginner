@@ -1,0 +1,34 @@
+name: 'Basic'
+
+# 어떤 상황에서 이게 돌아가는지 trigger
+# on: ['push','pull_request'] 
+# on:
+#   push:
+#     branches:
+#       -main
+#       -'feature/*'
+#     paths:
+#       -'src/**/*'
+on:
+  push
+
+jobs:
+  build-test: # 딕셔너리 의미, 순서보장X
+    name:'First Job'
+
+    runs-on:ubuntu-latest # 우리의 애플리케이션은 우분투 전용이다
+
+    # 본격적인 수행 부분
+    steps: 
+      -name : Say hello world 1 # 배열의 의미
+      shell: bash # bash 쉘
+      run:
+        echo "Hello world from step 1"
+      
+      -name : Say hello world 2
+      shell:pwsh #파워쉘
+      run:
+        echo "Hello world from 2"
+
+
+
