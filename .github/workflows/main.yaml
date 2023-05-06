@@ -5,6 +5,7 @@ on:
     branches:
       - main
 
+
 jobs:
   somabot:
     name: "쏘마 봇으로 메시지 보내기"
