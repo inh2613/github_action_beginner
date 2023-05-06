@@ -42,8 +42,9 @@
 
 
 
-name: hello-world
+name: 'hello-world'
 on: push
+
 jobs:
   first:
     name:'First Job'
